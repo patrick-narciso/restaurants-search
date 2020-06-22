@@ -1,0 +1,64 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "react/jsx-props-no-spreading": ["off"],
+    "no-confusing-arrow": [
+      "error",
+      {
+        "allowParens": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/jsx-one-expression-per-line": 0,
+    "react/sort-prop-types": [
+      "error",
+      {
+        "ignoreCase": false
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["config"]
+      }
+    ],
+    "sort-imports": "off",
+    "import/no-unresolved": 0,
+    "react/prop-types": "off",
+    "no-shadow": "off",
+    "indent": "off",
+    "jsx-a11y/anchor-is-valid": "warn",
+    "react/jsx-closing-bracket-location": "off",
+    "import/prefer-default-export": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/style-prop-object": "off",
+    "react/jsx-closing-bracket": "off",
+    "prettier/prettier": "error",
+    "arrow-parens": "off",
+    "object-curly-newline": "off"
+  },
+  "plugins": ["react", "prettier", "react-hooks"],
+  "extends": ["airbnb", "prettier"]
+}

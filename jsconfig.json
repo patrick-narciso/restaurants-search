@@ -1,0 +1,15 @@
+{
+  "include": ["**/*"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "module": "es6",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "paths": {
+      "@components/*": ["./src/components/components/*"],
+      "@": ["./src/*"]
+    }
+  }
+}
