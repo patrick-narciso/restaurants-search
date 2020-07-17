@@ -8,7 +8,7 @@
     "jsx": "react",
     "experimentalDecorators": true,
     "paths": {
-      "@components/*": ["./src/components/components/*"],
+      "@components/*": ["./src/components/*"],
       "@": ["./src/*"]
     }
   }
