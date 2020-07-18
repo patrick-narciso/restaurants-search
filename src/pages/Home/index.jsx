@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Text } from '../../components';
 
-const Div = styled.div`
-  font-family: ${({ theme }) => theme.fonts.fontFamily};
-`;
-
-const Home = () => <Div>Hello World!</Div>;
+const Home = () => (
+  <Text size="large" textStyle="uppercase">
+    Hello World!
+  </Text>
+);
 
 export default Home;
