@@ -2180,7 +2180,7 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/dom@^1.1.0":
+"@material/dom@^1.0.0", "@material/dom@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@material/dom/-/dom-1.1.0.tgz#3bd3d1a3415b4181118fecb182d93beda56a6f8c"
   integrity sha512-+HWW38ZaM2UBPu4+7QCusLDSf4tFT31rsEXHkTkxYSg/QpDivfPx6YDz4OmYtafmhPR1d1YjqB3MYysUHdodyw==
@@ -2214,6 +2214,17 @@
     "@material/rtl" "^0.42.0"
     "@material/theme" "^1.1.0"
     "@material/typography" "^2.3.0"
+    tslib "^1.9.3"
+
+"@material/icon-button@^2.1.1":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@material/icon-button/-/icon-button-2.3.0.tgz#1160ecccd201161a1a38033732beed95a0624497"
+  integrity sha512-EZhdCn9a9livj9rGTUtDQ3UmF2zkAkaysWzgyDaGUih9rAbZThtGE68DhBWjBoe/+FDAOZ/vXnR23FdCsITmmw==
+  dependencies:
+    "@material/base" "^1.0.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/ripple" "^2.3.0"
+    "@material/theme" "^1.1.0"
     tslib "^1.9.3"
 
 "@material/line-ripple@^1.0.0":
@@ -2270,12 +2281,29 @@
     "@material/floating-label" "^1.0.0"
     classnames "^2.2.6"
 
+"@material/react-icon-button@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@material/react-icon-button/-/react-icon-button-0.15.0.tgz#12f2c632c403d9e712579c763768c390354677e5"
+  integrity sha512-fTpRvZiXRUx7dbUiUfgJ86efeIF2dBH3NjRcy/pGj6UV7klDGN0PTv9T0zJYmQnkngXd47RrbvG2rLr4l5efQA==
+  dependencies:
+    "@material/icon-button" "^2.1.1"
+    "@material/react-ripple" "^0.15.0"
+    classnames "^2.2.6"
+
 "@material/react-line-ripple@^0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@material/react-line-ripple/-/react-line-ripple-0.15.0.tgz#88b57fa1563065f5d88c886c2e3cc0b055ec5293"
   integrity sha512-1xF54cjh9gKJleBKw5a39+fHkxzLam/jHRhXv2Zt0Kvu4IDFPHgFzx/vVCTaaCTUftHWKvSW6cVwIy+oPispXg==
   dependencies:
     "@material/line-ripple" "^1.0.0"
+    classnames "^2.2.6"
+
+"@material/react-material-icon@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@material/react-material-icon/-/react-material-icon-0.15.0.tgz#7720e67626892dd3d6e2de96a90e2d92e8049293"
+  integrity sha512-KDiMtMEtBZvqlma7wTS0ObY9BSFVtbCVkZiTnde/CxsYEQG9N6QwHClpbS4u/H8mWyXLdlSAQhK7rYSq1XGV0w==
+  dependencies:
+    "@material/react-ripple" "^0.15.0"
     classnames "^2.2.6"
 
 "@material/react-notched-outline@^0.15.0":
@@ -2285,6 +2313,16 @@
   dependencies:
     "@material/notched-outline" "^1.1.1"
     classnames "^2.2.6"
+
+"@material/react-ripple@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@material/react-ripple/-/react-ripple-0.15.0.tgz#70adfec74942b4b5dab130e71cc5d0734f2257bb"
+  integrity sha512-8YPEpiQNOaq3QtMc1DBxVVqOg/XnoWDj/EJ8eW0xmB4HvXElztKNTZoIpAAuQMZ8jbyZkRJRiFDa33u+wLFDCg==
+  dependencies:
+    "@material/dom" "^1.0.0"
+    "@material/ripple" "^1.0.0"
+    classnames "^2.2.6"
+    utility-types "^3.2.1"
 
 "@material/react-text-field@^0.15.0":
   version "0.15.0"
@@ -2296,6 +2334,18 @@
     "@material/react-notched-outline" "^0.15.0"
     "@material/textfield" "^2.3.1"
     classnames "^2.2.6"
+
+"@material/ripple@^1.0.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@material/ripple/-/ripple-1.1.0.tgz#236016fb30c8366faf143297df2c38166d84ffbc"
+  integrity sha512-mkfDBZAmxjpRG7V9TrfOmLxt1g/wvGHCXtYPgvH7W8ozjf53edqxLOFENEdvHbie27y9nyixzXn0gzU0HnxSeA==
+  dependencies:
+    "@material/animation" "^1.0.0"
+    "@material/base" "^1.0.0"
+    "@material/dom" "^1.1.0"
+    "@material/feature-targeting" "^0.44.1"
+    "@material/theme" "^1.1.0"
+    tslib "^1.9.3"
 
 "@material/ripple@^2.3.0":
   version "2.3.0"
@@ -12014,6 +12064,11 @@ utila@^0.4.0, utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=
+
+utility-types@^3.2.1:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
+  integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
 utils-merge@1.0.1:
   version "1.0.1"
