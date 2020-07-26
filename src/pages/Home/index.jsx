@@ -2,11 +2,23 @@ import React from 'react';
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 
+import { Text } from '../../components';
 import logo from '../../assets/logo.svg';
-import { Container, Search, Logo } from './styles';
+import photo from '../../assets/restaurante-fake.png';
+import { Container, Search, Logo, Card, Title, Carousel } from './styles';
 
 const Home = () => {
   const [value, setValue] = React.useState('');
+  const settings = {
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    speed: 300,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    adaptiveHeight: true,
+  };
+
   return (
     <Container>
       <Search>
@@ -17,6 +29,29 @@ const Home = () => {
           trailingIcon={<MaterialIcon role="button" icon="search" />}>
           <Input type="text" value={value} onChange={(e) => setValue(e.target.value)} />
         </TextField>
+        <Title size="large">Na sua Área</Title>
+        <Carousel {...settings}>
+          <Card photo={photo}>
+            <Text size="medium" color="#ffffff">
+              Carousel Item 1
+            </Text>
+          </Card>
+          <Card photo={photo}>
+            <Text size="medium" color="#ffffff">
+              Carousel Item 2
+            </Text>
+          </Card>
+          <Card photo={photo}>
+            <Text size="medium" color="#ffffff">
+              Carousel Item 3
+            </Text>
+          </Card>
+          <Card photo={photo}>
+            <Text size="medium" color="#ffffff">
+              Carousel Item 4
+            </Text>
+          </Card>
+        </Carousel>
       </Search>
     </Container>
   );

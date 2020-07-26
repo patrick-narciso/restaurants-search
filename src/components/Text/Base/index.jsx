@@ -8,8 +8,8 @@ const BaseText = styled.p`
   letter-spacing: 0.11px;
   font-family: ${({ theme: { fonts } }) => fonts.fontFamily};
   font-weight: normal;
-  color: ${({ theme: { colors } }) => colors.text};
-  text-transform: ${({ textStyle }) => textStyle};
+  color: ${({ color, theme: { colors } }) => color || colors.text};
+  text-transform: ${({ textStyle }) => textStyle || 'none'};
 
   ${({ size }) => size === 'large' && TextLarge};
   ${({ size }) => size === 'medium' && TextMedium};
