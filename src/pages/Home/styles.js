@@ -42,3 +42,7 @@ export const Carousel = styled(Slider)`
     margin-right: 16px;
   }
 `;
+
+export const Wrapper = styled.div`
+  display: flex;
+`;
