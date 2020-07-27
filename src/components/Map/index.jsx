@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { GoogleApiWrapper, Map, Marker } from 'google-maps-react';
 
+import { setRestaurants } from '../../redux/modules/restaurants';
+
 export const MapContainer = (props) => {
-  const [nearbyRestaurants, setNearbyRestaurants] = useState([]);
+  const dispatch = useDispatch();
+  const { restaurants = [] } = useSelector((state) => state.restaurants);
   const { google, initialCenter } = props;
 
   const searchNearby = (map, center) => {
     const service = new google.maps.places.PlacesService(map);
 
-    // Specify location, radius and place types for your Places API search.
     const request = {
       location: center,
       radius: '20000',
@@ -17,7 +20,7 @@ export const MapContainer = (props) => {
 
     service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        setNearbyRestaurants(results);
+        dispatch(setRestaurants(results));
         console.log(results);
       }
     });
@@ -29,7 +32,7 @@ export const MapContainer = (props) => {
 
   return (
     <Map google={google} initialCenter={initialCenter} onReady={onMapReady} zoom={15}>
-      {nearbyRestaurants.map((restaurant) => (
+      {restaurants.map((restaurant) => (
         <Marker
           key={restaurant.id}
           name={restaurant.name}

@@ -7,6 +7,7 @@ export const Container = styled.aside`
   background-color: ${({ theme: { colors } }) => colors.background};
   width: 360px;
   height: 100vh;
+  overflow-y: scroll;
 `;
 
 export const Search = styled.section`
@@ -29,7 +30,7 @@ export const Card = styled.div`
   background-size: cover;
   p {
     margin-left: 6px;
-    margin-top: 40px;
+    margin-top: 10px;
   }
 `;
 
