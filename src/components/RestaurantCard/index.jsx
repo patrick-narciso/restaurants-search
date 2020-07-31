@@ -13,7 +13,7 @@ const ResturantCard = ({ restaurant, onClick }) => {
       <RestaurantInfo>
         <Text size="large">{restaurant.name}</Text>
         <ReactStars count={5} value={restaurant.rating} edit={false} isHalf activeColor="#e7711c" />
-        <Content size="medium">{restaurant.vicinity}</Content>
+        <Content size="medium">{restaurant.formatted_address || restaurant.vicinity}</Content>
       </RestaurantInfo>
       <RestaurantPhoto
         imageLoaded={imageLoaded}
