@@ -24,6 +24,8 @@ export const RestaurantPhoto = styled.img`
   border-radius: 6px;
   width: 100px;
   height: 100px;
+  object-fit: cover;
+  display: ${({ imageLoaded }) => (imageLoaded ? 'block' : 'none')};
 `;
 
 export const Content = styled(Text)`
