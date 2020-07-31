@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 
-import { Text, RestaurantCard, Modal, Map } from '../../components';
+import { RestaurantCard, Modal, Map, ImageCard, Loader } from '../../components';
 import logo from '../../assets/logo.svg';
-import { Container, Search, Logo, Card, Title, Carousel, Wrapper } from './styles';
+import { Container, Search, Logo, Title, Carousel, Wrapper } from './styles';
 
 const Home = () => {
   const [value, setValue] = useState('');
   const [open, setOpen] = useState(false);
-  const { restaurants = [] } = useSelector((state) => state.restaurants);
+  const { restaurants } = useSelector((state) => state.restaurants);
+  const hasRestaurants = restaurants.length > 0;
 
   const settings = {
     dots: false,
@@ -20,6 +21,35 @@ const Home = () => {
     slidesToShow: 4,
     slidesToScroll: 4,
     adaptiveHeight: true,
+  };
+
+  const renderCarousel = () => {
+    if (hasRestaurants) {
+      return (
+        <>
+          <Title size="large">Na sua Área</Title>
+          <Carousel {...settings}>
+            {restaurants.map((restaurant) => (
+              <ImageCard restaurant={restaurant} />
+            ))}
+          </Carousel>
+        </>
+      );
+    }
+    return <Loader />;
+  };
+
+  const renderRestaurants = () => {
+    if (hasRestaurants) {
+      return restaurants.map((restaurant) => (
+        <RestaurantCard
+          key={restaurant.place_id}
+          restaurant={restaurant}
+          onClick={() => setOpen(true)}
+        />
+      ));
+    }
+    return null;
   };
 
   return (
@@ -33,27 +63,9 @@ const Home = () => {
             trailingIcon={<MaterialIcon role="button" icon="search" />}>
             <Input type="text" value={value} onChange={(e) => setValue(e.target.value)} />
           </TextField>
-          <Title size="large">Na sua Área</Title>
-          <Carousel {...settings}>
-            {restaurants.map((restaurant) => (
-              <Card photo={restaurant.photos ? restaurant.photos[0].getUrl() : restaurant.icon}>
-                <Text size="medium" color="#ffffff">
-                  {restaurant.name}
-                </Text>
-              </Card>
-            ))}
-          </Carousel>
+          {renderCarousel()}
         </Search>
-        {restaurants.length > 0 &&
-          restaurants.map((restaurant) => (
-            <RestaurantCard
-              rating={restaurant.rating}
-              title={restaurant.name}
-              address={restaurant.vicinity}
-              photo={restaurant.photos ? restaurant.photos[0].getUrl() : restaurant.icon}
-              onClick={() => setOpen(true)}
-            />
-          ))}
+        {renderRestaurants()}
         <Modal open={open} onClose={() => setOpen(false)}>
           cliquei
         </Modal>

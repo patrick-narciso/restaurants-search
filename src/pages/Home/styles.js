@@ -22,18 +22,6 @@ export const Logo = styled.img`
   margin: 15px;
 `;
 
-export const Card = styled.div`
-  min-width: 90px;
-  height: 90px;
-  border-radius: 8px;
-  background-image: url(${(props) => props.photo});
-  background-size: cover;
-  p {
-    margin-left: 6px;
-    margin-top: 10px;
-  }
-`;
-
 export const Title = styled(Text)`
   margin: 16px 0;
 `;
