@@ -5,6 +5,7 @@ import TextMedium from '../Medium';
 const BaseText = styled.p`
   line-height: 14px;
   font-size: 12px;
+  margin-bottom: 10px;
   letter-spacing: 0.11px;
   font-family: ${({ theme: { fonts } }) => fonts.fontFamily};
   font-weight: normal;

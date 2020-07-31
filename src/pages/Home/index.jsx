@@ -1,17 +1,27 @@
+/* eslint-disable camelcase */
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import TextField, { Input } from '@material/react-text-field';
 import MaterialIcon from '@material/react-material-icon';
 
-import { RestaurantCard, Modal, Map, ImageCard, Loader } from '../../components';
+import {
+  RestaurantCard,
+  Modal,
+  Map,
+  ImageCard,
+  Loader,
+  Text,
+  ImageSkeleton as Skeleton,
+} from '../../components';
 import logo from '../../assets/logo.svg';
 import { Container, Search, Logo, Title, Carousel, Wrapper } from './styles';
 
 const Home = () => {
   const [value, setValue] = useState('');
   const [query, setQuery] = useState('');
+  const [placeId, setPlaceId] = useState(null);
   const [open, setOpen] = useState(false);
-  const { restaurants } = useSelector((state) => state.restaurants);
+  const { restaurants, restaurantSelected } = useSelector((state) => state.restaurants);
   const hasRestaurants = restaurants.length > 0;
 
   const settings = {
@@ -46,7 +56,10 @@ const Home = () => {
         <RestaurantCard
           key={restaurant.place_id}
           restaurant={restaurant}
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setPlaceId(restaurant.place_id);
+            setOpen(true);
+          }}
         />
       ));
     }
@@ -78,10 +91,28 @@ const Home = () => {
         </Search>
         {renderRestaurants()}
         <Modal open={open} onClose={() => setOpen(false)}>
-          cliquei
+          {restaurantSelected ? (
+            <>
+              <Text size="large">{restaurantSelected?.name}</Text>
+              <Text size="medium">{restaurantSelected?.formatted_phone_number}</Text>
+              <Text size="medium">{restaurantSelected?.formatted_address}</Text>
+              <Text size="medium">
+                {restaurantSelected?.opening_hours?.open_now
+                  ? 'Aberto agora :)'
+                  : 'Fechado neste momento :('}
+              </Text>
+            </>
+          ) : (
+            <>
+              <Skeleton width="10px" height="10px" />
+              <Skeleton width="10px" height="10px" />
+              <Skeleton width="10px" height="10px" />
+              <Skeleton width="10px" height="10px" />
+            </>
+          )}
         </Modal>
       </Container>
-      <Map query={query} />
+      <Map query={query} placeId={placeId} />
     </Wrapper>
   );
 };

@@ -13,6 +13,7 @@ const keyFrameLoading = keyframes`
 export const LoadingSkeleton = styled.div`
   background-color: gray;
   border-radius: 6px;
+  margin-bottom: 10px;
   min-width: ${(props) => props.width};
   height: ${(props) => props.height};
   animation: ${keyFrameLoading} 500ms infinite alternate;
