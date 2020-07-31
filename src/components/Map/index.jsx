@@ -7,7 +7,7 @@ import { setRestaurants } from '../../redux/modules/restaurants';
 export const MapContainer = (props) => {
   const dispatch = useDispatch();
   const { restaurants = [] } = useSelector((state) => state.restaurants);
-  const { google, initialCenter } = props;
+  const { google } = props;
 
   const searchNearby = (map, center) => {
     const service = new google.maps.places.PlacesService(map);
@@ -21,7 +21,6 @@ export const MapContainer = (props) => {
     service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         dispatch(setRestaurants(results));
-        console.log(results);
       }
     });
   };
@@ -31,7 +30,13 @@ export const MapContainer = (props) => {
   }
 
   return (
-    <Map google={google} initialCenter={initialCenter} onReady={onMapReady} zoom={15}>
+    <Map
+      google={google}
+      centerAroundCurrentLocation
+      onReady={onMapReady}
+      onRecenter={onMapReady}
+      zoom={15}
+      {...props}>
       {restaurants.map((restaurant) => (
         <Marker
           key={restaurant.id}
