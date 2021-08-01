@@ -10,7 +10,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.3.0"
+    "styled-components": "^5.3.0",
+    "styled-reset": "^4.3.4"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
