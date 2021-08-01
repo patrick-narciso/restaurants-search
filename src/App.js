@@ -1,7 +1,8 @@
 import React from 'react';
-import theme from './theme';
 import { ThemeProvider } from 'styled-components';
 import { Reset } from 'styled-reset'
+
+import theme from './theme';
 import Home from './pages/Home';
 
 
