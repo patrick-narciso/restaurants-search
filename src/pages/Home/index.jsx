@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import TextField, { Input } from '@material/react-text-field/dist/index';
 import MaterialIcon from '@material/react-material-icon';
 
-import { Container, Search, Wrapper, Logo, Map, CarroselTitle, Carousel } from './styled';
+import { Container, Search, Wrapper, Logo, Map, CarroselTitle, Carousel } from './styles';
 
 import logo from '../../assets/logo.svg';
 import restaurante from '../../assets/restaurante-fake.png';
-import { Card } from '../../components';
+import { Card, Restaurant } from '../../components';
 
 const Home = () => {
 
@@ -45,6 +45,7 @@ const Home = () => {
             <Card photo={restaurante} title="nome do restauante" />            
           </Carousel>
         </Search>
+        <Restaurant />
       </Container>
       <Map />
     </Wrapper>
