@@ -5,14 +5,14 @@ import restaurante from '../../assets/restaurante-fake.png'
 
 import { Restaurant, RestaurantInfo, Title, Address, RestaurantPhoto } from './styles';
 
-const RestaurantCard = () => (
+const RestaurantCard = ({ restaurant }) => (
 <Restaurant>
     <RestaurantInfo>
-        <Title>Nome do Restaurante</Title>
-        <ReactStars count={5} edit={false} value={4} isHalf activeColor="#e7711c"/>
-        <Address>Rua acassia</Address>
+        <Title>{restaurant.name}</Title>
+        <ReactStars count={5} edit={false} value={restaurant.rating} isHalf activeColor="#e7711c"/>
+        <Address>{ restaurant.vicinity || restaurant.formatted_address }</Address>
     </RestaurantInfo>
-    <RestaurantPhoto src={restaurante} alt="foto do restaurante" />
+    <RestaurantPhoto src={restaurant.photos ? restaurant.photos[0].getUrl() : restaurante} alt="foto do restaurante" />
 </Restaurant>
 )
 export default RestaurantCard
