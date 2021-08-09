@@ -21,7 +21,7 @@ export const Search = styled.section`
 `;
 
 export const Logo = styled.img`
-    margin-bottom: 3%;
+    margin: 15px;
 `;
 
 export const Map = styled.div`
