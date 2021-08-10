@@ -8,7 +8,7 @@ export const MapContainer = (props) => {
     const dispatch = useDispatch();
     const { restaurants } = useSelector((state) => state.restaurants);
     const [ map, setMap ] = useState(null);
-    const { google, query } = props;
+    const { google, query, placeId } = props;
 
     useEffect(() => {
       
@@ -17,6 +17,29 @@ export const MapContainer = (props) => {
       };
 
     }, [query]);
+
+    useEffect(() => {
+
+      if(placeId){
+        getRestaurantById(placeId);
+      }
+
+    }, [placeId]);
+
+    const getRestaurantById = (placeId) => {
+      const service = new google.maps.places.PlacesService(map);
+    
+      const request = {
+        placeId,
+        fields: ['name', 'opening_hours', 'formatted_address', 'formatted_phone_number'],
+      };
+    
+      service.getDetails(request, (place, status) => {
+        if(status === google.maps.places.PlacesServiceStatus.OK){
+          dispatch(setRestaurant(place));
+        };
+      });
+    }
 
     const searchByQuery = (query) => {
       const service = new google.maps.places.PlacesService(map);
@@ -57,19 +80,18 @@ export const MapContainer = (props) => {
     }
 
     return (
-    <Map google={google} centerAroundCurrentLocation onReady={onMapReady} onRecenter={onMapReady}>
-      {restaurants.map((restaurant) => (
-        <Marker 
-          key={restaurant.place_id} 
-          name={restaurant.name} 
-          position={{
-            lat: restaurant.geometry.location.lat(),
-            lng: restaurant.geometry.location.lng(),
-          }} 
-        />
-      )
-      )}
-    </Map>
+      <Map google={google} centerAroundCurrentLocation onReady={onMapReady} onRecenter={onMapReady} {...props}>
+        {restaurants.map((restaurant) => (
+          <Marker
+            key={restaurant.place_id}
+            name={restaurant.name}
+            position={{
+              lat: restaurant.geometry.location.lat(),
+              lng: restaurant.geometry.location.lng(),
+            }}
+          />
+        ))}
+      </Map>
     );
 };
 
